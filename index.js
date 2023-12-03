@@ -96,6 +96,71 @@ app.get('/steps2', async (req, res, next) => {
 	}
 });
 
+// using dados calorias
+app.get('/calories', async (req, res, next) => {
+    try {
+        const dataTypeName = 'com.google.calories.expended';
+        const dataSourceId = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended';
+        const now = Date.now();
+        const data = {
+            aggregateBy: [{ dataTypeName, dataSourceId }],
+            bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
+            startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+            endTimeMillis: now,
+        };
+        const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
+        
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${req.token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        
+        const result = await response.json();
+        res.json(result);
+    } catch (error) {
+        next(error);
+    }
+});
+
+
+// using dados distancia
+app.get('/distance', async (req, res, next) => {
+    try {
+        const dataTypeName = 'com.google.distance.delta';
+        const dataSourceId = 'derived:com.google.distance.delta:com.google.android.gms:merge_distance_delta';
+        const now = Date.now();
+        const data = {
+            aggregateBy: [{ dataTypeName, dataSourceId }],
+            bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
+            startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+            endTimeMillis: now,
+        };
+        const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
+        
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${req.token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        
+        const result = await response.json();
+
+        // Obtendo o valor da distância do primeiro ponto de dados
+        const distanceValue = result.bucket[0].dataset[0].point[0].value[0].fpVal;
+
+        res.json({ distance: distanceValue });
+    } catch (error) {
+        next(error);
+    }
+});
+
 // error handler middleware
 app.use((err, req, res, next) => {
 	res.status(500).json({ error: err.message });
