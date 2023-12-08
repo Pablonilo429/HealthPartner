@@ -163,7 +163,7 @@ app.get('/distance', async (req, res, next) => {
 
 app.get('/bpm', async (req, res, next) => {
 	try {
-		const dataTypeName = 'com.google.heart_rate.bpm';
+		const dataTypeName = 'com.google.heart_rate.summary';
 		const dataSourceId = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm';
 		const now = Date.now();
 		const data = {
