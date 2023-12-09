@@ -168,11 +168,11 @@ app.get('/bpm', async (req, res, next) => {
 		const now = Date.now();
 		const data = {
 			aggregateBy: [{ dataTypeName, dataSourceId }],
-			bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
-			startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+			bucketByTime: { durationMillis:  24 * 60 * 60 * 1000 },
+			startTimeMillis: now - 7 * 24 * 60 * 60 * 1000,
 			endTimeMillis: now,
 		};
-		const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
+		const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))&timePeriod=7days';
 
 		const response = await fetch(endpoint, {
 			method: 'POST',
