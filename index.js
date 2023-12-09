@@ -76,7 +76,7 @@ app.get('/steps2', async (req, res, next) => {
 		const data = {
 			aggregateBy: [{ dataTypeName, dataSourceId }],
 			bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
-			startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+			startTimeMillis: now - 7 * 24 * 60 * 60 * 1000,
 			endTimeMillis: now,
 		};
 		const endpoint =
@@ -90,7 +90,17 @@ app.get('/steps2', async (req, res, next) => {
 			body: JSON.stringify(data),
 		});
 		const result = await response.json();
-		res.json(result);
+		const intValsArray = result.bucket.flatMap(bucket =>
+			bucket.dataset.flatMap(dataset =>
+				dataset.point.flatMap(point =>
+					point.value.flatMap(value =>
+						value.intVal !== undefined ? value.intVal : []
+					)
+				)
+			)
+		);
+		console.log(intValsArray);
+		res.json(intValsArray);
 	} catch (error) {
 		next(error);
 	}
@@ -105,7 +115,7 @@ app.get('/calories', async (req, res, next) => {
         const data = {
             aggregateBy: [{ dataTypeName, dataSourceId }],
             bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
-            startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+            startTimeMillis: now - 7 * 24 * 60 * 60 * 1000,
             endTimeMillis: now,
         };
         const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
@@ -120,7 +130,17 @@ app.get('/calories', async (req, res, next) => {
         });
         
         const result = await response.json();
-        res.json(result);
+		const fpValsArray = result.bucket.flatMap(bucket =>
+			bucket.dataset.flatMap(dataset =>
+				dataset.point.flatMap(point =>
+					point.value.flatMap(value =>
+						value.fpVal !== undefined ? value.fpVal : []
+					)
+				)
+			)
+		);
+		console.log(fpValsArray);
+		res.json(fpValsArray);
     } catch (error) {
         next(error);
     }
@@ -136,7 +156,7 @@ app.get('/distance', async (req, res, next) => {
         const data = {
             aggregateBy: [{ dataTypeName, dataSourceId }],
             bucketByTime: { durationMillis: 24 * 60 * 60 * 1000 },
-            startTimeMillis: now - 3 * 24 * 60 * 60 * 1000,
+            startTimeMillis: now - 7 * 24 * 60 * 60 * 1000,
             endTimeMillis: now,
         };
         const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
@@ -151,7 +171,17 @@ app.get('/distance', async (req, res, next) => {
         });
         
 		const result = await response.json();
-		res.json(result);
+		const fpValsArray = result.bucket.flatMap(bucket =>
+			bucket.dataset.flatMap(dataset =>
+				dataset.point.flatMap(point =>
+					point.value.flatMap(value =>
+						value.fpVal !== undefined ? value.fpVal : []
+					)
+				)
+			)
+		);
+		console.log(fpValsArray);
+		res.json(fpValsArray);
 
     } catch (error) {
         next(error);
@@ -169,7 +199,7 @@ app.get('/bpm', async (req, res, next) => {
 			startTimeMillis: now - 7 * 24 * 60 * 60 * 1000,
 			endTimeMillis: now,
 		};
-		const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))&timePeriod=7days';
+		const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
 
 		const response = await fetch(endpoint, {
 			method: 'POST',
@@ -181,11 +211,24 @@ app.get('/bpm', async (req, res, next) => {
 		});
 
 		const result = await response.json();
-		res.json(result);
+		const fpValsArray = result.bucket.flatMap(bucket =>
+			bucket.dataset.flatMap(dataset =>
+				dataset.point.flatMap(point =>
+					point.value.flatMap(value =>
+						value.fpVal !== undefined ? value.fpVal : []
+					)
+				)
+			)
+		);
+		console.log(fpValsArray);
+		res.json(fpValsArray);
 	} catch (error) {
 		next(error);
 	}
 });
+
+
+
 // error handler middleware
 app.use((err, req, res, next) => {
 	res.status(500).json({ error: err.message });
