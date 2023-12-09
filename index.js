@@ -109,7 +109,7 @@ app.get('/calories', async (req, res, next) => {
             endTimeMillis: now,
         };
         const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
-
+        
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
@@ -118,7 +118,7 @@ app.get('/calories', async (req, res, next) => {
             },
             body: JSON.stringify(data),
         });
-
+        
         const result = await response.json();
         res.json(result);
     } catch (error) {
@@ -140,7 +140,7 @@ app.get('/distance', async (req, res, next) => {
             endTimeMillis: now,
         };
         const endpoint = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate?fields=bucket(dataset(point(value(fpVal))))';
-
+        
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
@@ -149,13 +149,10 @@ app.get('/distance', async (req, res, next) => {
             },
             body: JSON.stringify(data),
         });
+        
+		const result = await response.json();
+		res.json(result);
 
-        const result = await response.json();
-
-        // Obtendo o valor da distância do primeiro ponto de dados
-        const distanceValue = result.bucket[0].dataset[0].point[0].value[0].fpVal;
-
-        res.json({ distance: distanceValue });
     } catch (error) {
         next(error);
     }
@@ -163,7 +160,7 @@ app.get('/distance', async (req, res, next) => {
 
 app.get('/bpm', async (req, res, next) => {
 	try {
-		const dataTypeName = 'com.google.heart_rate.summary';
+		const dataTypeName = 'com.google.heart_rate.bpm';
 		const dataSourceId = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm';
 		const now = Date.now();
 		const data = {
@@ -193,8 +190,6 @@ app.get('/bpm', async (req, res, next) => {
 app.use((err, req, res, next) => {
 	res.status(500).json({ error: err.message });
 });
-
-
 
 app.listen(PORT, () => {
 	console.log(`App listening at ${PORT}`);
