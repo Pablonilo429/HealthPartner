@@ -4,7 +4,7 @@
  }
   
 body{
-    background: url(/Images/imhomepage.png) center fixed;
+    background: url(../Images/imhomepage.png) center fixed;
     background-size: cover;
     background-repeat: no-repeat;
     font-family: Inter;
