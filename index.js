@@ -3,7 +3,19 @@ import { google } from 'googleapis';
 import express from 'express';
 
 const PORT = process.env.NODE_PORT;
+const tokenauth = process.env.TOKEN;
 const app = express();
+
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*'); // Define a origem permitida (neste caso, todos os origins)
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+	if (req.method === 'OPTIONS') {
+		res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+		return res.status(200).json({});
+	}
+	next();
+});
+
 
 const oAuth2Client = new google.auth.OAuth2(
 	process.env.GOOGLE_CLIENT_ID,
@@ -84,7 +96,7 @@ app.get('/steps2', async (req, res, next) => {
 		const response = await fetch(endpoint, {
 			method: 'POST',
 			headers: {
-				Authorization: `Bearer ${req.token}`,
+				Authorization: `Bearer ${tokenauth}`,
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
@@ -123,7 +135,7 @@ app.get('/calories', async (req, res, next) => {
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${req.token}`,
+                Authorization: `Bearer ${tokenauth}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -164,7 +176,7 @@ app.get('/distance', async (req, res, next) => {
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${req.token}`,
+                Authorization: `Bearer ${tokenauth}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -204,7 +216,7 @@ app.get('/bpm', async (req, res, next) => {
 		const response = await fetch(endpoint, {
 			method: 'POST',
 			headers: {
-				Authorization: `Bearer ${req.token}`,
+				Authorization: `Bearer ${tokenauth}`,
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
