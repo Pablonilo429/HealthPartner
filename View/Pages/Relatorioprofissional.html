@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
-  <title>Perfil</title>
+  <title>Relatorio profissional</title>
 
 </head>
 
@@ -47,65 +47,89 @@
     </div>
   </nav>
 
-
   <div class="container mt-lg-2 mb-lg-3 pt-lg-4 ps-lg-5 text-dark p-2" id="relatorio">
+    
     <div class="row mb-lg-4 mb-3 mt-2">
-      <h2 class="text-lg-center">Confira o  relatório do seu paciente</h2>
-    </div>
-
-    <div>
-    <div class="row mb-lg-4 mb-3 mt-2 text-right">
-      <div>
-      <h3>Frequência Cardíaca</h3>
-      <ul>
-        <li>Sua frequência cardíaca medida foi de 80  batimentos por minuto (bpm). </li>
-        <li class="mb-4">  Se você estiver em repouso, a frequência cardíaca ideal varia entre 50 a 100 bpm  </li>
-        <h5>Obs.:</h5>
-        <li>  Durante exercícios físicos, é possível que sua frequência cardíaca aumente acima de 100 bpm.  Você pode calcular sua frequência cardíaca máxima fazendo o seguinte cálculo: 220 - Idade = BPM máximo.</li>
-        <li>Para maiores informações consulte seu médico. </li>
-      </ul>     
-      </div>
-           
-      <div>
-        <h3>Quantidade de Passos
-        </h3>
-        <ul>
-          <li> Sua quantidade de passos hoje foi de 200 e está abaixo da quantidade ideal.  </li>
-          <li>  Segundo a OMS, a quantidade de passos ideal é de 10.000 passos por dia </li>
-        </ul>   
-      </div>
-
-      <div>
-        <h3>Distância Percorrida
-        </h3>
-        <ul>
-          <li> A distância que você percorreu hoje foi de 5 Km.  </li>
-          <li> A distância percorrida ideal depende dos seus objetivos em relação a seus exercícios diários. Para mais informações consulte um profissional de Educação física.  </li>
-        </ul>   
-      </div>
-
-      <div>
-        <h3>Calorias gastas
-        </h3>
-        <ul>
-          <li>  Você gastou 300 Kcal hoje.  </li>
-          <li> A quantidade de calorias gastas ideal depende de cada indivíduo e de suas metas. Verifique mais informações com seu nutricionista.  </li>
-        </ul>   
-      </div>
-
-      <div class="mt-5">
-        <p> * A frequência cardíaca mostrada acima se refere à última medida obtida.</p>
-      </div>
-
+      <h2 class="text-lg-center">Confira o relatório do seu paciente</h2>
+    </div>   
       
+      <div class="row mb-lg-4 mb-lg-3 mt-lg--2 text-right border-dark me-lg-2 ">
+        
+        <div class="mb-lg-4">
+          <h3>Frequência Cardíaca*: <span id="FCprofissional"></span></h3>
+        </div>
 
+        <div class="mb-lg-4">
+          <h3>Quantidade de Passos**: <span id="Passosprofissional"></span></h3>
+        </div>
+
+        <div class="mb-lg-4">
+          <h3>Distância Percorrida**: <span id="Distprofissional"></span></h3>
+        </div>
+
+        <div class="mb-lg-4">
+          <h3>Calorias gastas**: <span id="Distprofissional"></span></h3>
+        </div>
+        <div>
+          <p> * A frequência cardíaca mostrada acima se refere à última medida obtida.</p>
+          <p>** Dados obtidos no dia de hoje a partir das 00:00 hrs</p>
+        </div>
+
+      </div>
     </div>
-    </div>
-   
+      
+      <div class="container mt-lg-2 mb-lg-3 pt-lg-4 ps-lg-5 text-dark p-2" id="relatorio">
+      <div class="mb-lg-4">
+        <div>
+        <h1>Gráficos:</h1>
+        </div>
+        <div class="mb-lg-4 ms-lg-2">
+        <p class="p-lg-2 fw-bold">Abaixo estão os gráficos relativos aos dados do paciente que foram coletados nos últimos 7 dias</p>
+      </div>
 
-  </div>
+      <div class="mb-lg-2">
+        <div>
+        <h2>Frequência cardíaca</h2>
+        </div>
+        <div>
+          <span id="graficoFC"></span>
+        </div>      
+      </div>
 
+      <div>
+        <div class="mb-lg-2">
+        <h2>Passos percorridos</h2>
+        </div>
+        <div>
+          <span id="graficoFC"></span>
+        </div>      
+      </div>
 
+      <div>
+        <div class="mb-lg-2">
+        <h2>Distância percorrida</h2>
+        </div>
+        <div>
+          <span id="graficoFC"></span>
+        </div>      
+      </div>
+
+      <div class="mb-lg-2">
+        <div>
+        <h2>Calorias gastas</h2>
+        </div>
+        <div>
+          <span id="graficoFC"></span>
+        </div>      
+      </div>
+        
+        
+      </div>
+      </div>
+  
+  
+
+  
 
 </body>
 
