@@ -1,4 +1,4 @@
-var token = 'ya29.a0AfB_byCeai0_B55bihSxX4dYJf04zB2M_qqERzmk9wqIdTZuB42KF5xKWUFZDySo0D0H5Dw9L3cO00ySOh6MS0Es-PHKu_Y47YKdQbtFk4WEodr-0AypSIzGagS_zx-JL0YBS85gwhFi95SGT7e0BlY5wefiLryXopK_aCgYKAbkSARMSFQHGX2MiyRCNzHMCfyZ-9xmHV_c_Kg0171';
+var token = 'ya29.a0AfB_byB6hdsZrGHwaV-enomt9ISvuR33TJ1dCnVDAMwQAzSv6plzar058AtFCiirCkGF9xWyEJwgE8nPCY21N-P5Eva0NA2V0YdKhfR3lxgy77dosCUS_Zvr1xGyCt65CKhZlx-l2VJXApiaY9MbPFi9UkgaGoxImOqTaCgYKAZISARMSFQHGX2MiBPFvz8thwczyGYBOLmLdfA0171';
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('DadosSmart.html')) {
         const verificarButtoncardio = document.getElementById('botaocard');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update the HTML with the heart rate data
                 if (bpmArray.length > 0) {
                     const averageHeartRate = bpmArray.reduce((acc, val) => acc + val, 0) / bpmArray.length;
-                    heartRateElement.textContent = `${bpmArray[6].toFixed(0)} bpm`;
+                    heartRateElement.textContent = `${bpmArray[11].toFixed(0)} bpm`;
                 } else {
                     heartRateElement.textContent = 'Sem dados disponíveis.';
                 }
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const heartRateData = await responseFC.json();
-                document.getElementById('FCrelatorio').textContent = heartRateData[6]; // Atualiza o elemento HTML com o valor da frequência cardíaca
+                document.getElementById('FCrelatorio').textContent = heartRateData[11].toFixed(0); // Atualiza o elemento HTML com o valor da frequência cardíaca
 
                 // Fetch para obter os dados da quantidade de passos
                 const responsePassos = await fetch('http://localhost:8001/steps2', {
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const heartRateData = await responseFC.json();
-                document.getElementById('FCprofissional').textContent = heartRateData[6] + " bpm"; // Atualiza o elemento HTML com o valor da frequência cardíaca
+                document.getElementById('FCprofissional').textContent = heartRateData[11].toFixed(0) + " bpm"; // Atualiza o elemento HTML com o valor da frequência cardíaca
 
                 // Fetch para obter os dados da quantidade de passos
                 const responsePassos = await fetch('http://localhost:8001/steps2', {

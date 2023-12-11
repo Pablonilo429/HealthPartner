@@ -134,7 +134,7 @@
 
 <script>
 
-  var token = 'ya29.a0AfB_byCeai0_B55bihSxX4dYJf04zB2M_qqERzmk9wqIdTZuB42KF5xKWUFZDySo0D0H5Dw9L3cO00ySOh6MS0Es-PHKu_Y47YKdQbtFk4WEodr-0AypSIzGagS_zx-JL0YBS85gwhFi95SGT7e0BlY5wefiLryXopK_aCgYKAbkSARMSFQHGX2MiyRCNzHMCfyZ-9xmHV_c_Kg0171'
+  var token = 'ya29.a0AfB_byB6hdsZrGHwaV-enomt9ISvuR33TJ1dCnVDAMwQAzSv6plzar058AtFCiirCkGF9xWyEJwgE8nPCY21N-P5Eva0NA2V0YdKhfR3lxgy77dosCUS_Zvr1xGyCt65CKhZlx-l2VJXApiaY9MbPFi9UkgaGoxImOqTaCgYKAZISARMSFQHGX2MiBPFvz8thwczyGYBOLmLdfA0171'
   var bpmArray;
   document.addEventListener('DOMContentLoaded', async () => {
     const accessToken = token; // Substitua pelo seu token OAuth
@@ -148,8 +148,9 @@
     });
 
     const bpmData = await response.json();
+    const arraybpm = JSON.parse(bpmData);
+    console.log(arraybpm);
     bpmArray = Array.isArray(bpmData) ? bpmData : [bpmData];
-
 
 
   });
@@ -157,25 +158,27 @@
 
 
   // Dados de exemplo (substitua com seus próprios dados)
+
   const dadosFC = {
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
       {
         label: 'Frequência Cardíaca',
-        data: freqcard,
+        data: [80, 85, 88, 82, 90, 87, 92], // Substitui os dados pelo conteúdo de bpmArray após a quinta posição
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 2,
         fill: false
       }
     ]
-  };
+  }
 
+  dadosFC.datasets.data
   const dadosPassos = {
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
       {
         label: 'Passos Percorridos',
-        data: [10000, 11000, 9500, 12000, 10500, 11200, 11500],
+        data: [1450, 4563, 1152, 3639, 292, 6464, 3822],
         borderColor: 'rgba(255, 206, 86, 1)',
         borderWidth: 2,
         fill: false
@@ -188,7 +191,7 @@
     datasets: [
       {
         label: 'Distância Percorrida (km)',
-        data: [5, 6, 4, 7, 5.5, 6.2, 6.8],
+        data: [1.0, 3.4, 0.7, 2.4, 0.1, 4.4, 2.5],
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 2,
         fill: false
@@ -201,7 +204,7 @@
     datasets: [
       {
         label: 'Calorias Gastas',
-        data: [300, 320, 280, 350, 310, 330, 340],
+        data: [45, 80, 34, 99, 10, 172, 104],
         borderColor: 'rgba(200, 198, 196, 1)',
         borderWidth: 2,
         fill: false
@@ -209,6 +212,7 @@
     ]
   };
 
+  const ctxFC = document.getElementById('graficoFC').getContext('2d');
   // Configuração do gráfico
   const configFC = {
     type: 'line',
@@ -259,7 +263,6 @@
   };
 
   // Renderiza os gráficos
-  const ctxFC = document.getElementById('graficoFC').getContext('2d');
   const ctxPassos = document.getElementById('graficoPassos').getContext('2d');
   const ctxDist = document.getElementById('graficoDist').getContext('2d');
   const ctxCalorias = document.getElementById('graficoCalorias').getContext('2d');
