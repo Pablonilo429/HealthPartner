@@ -1,4 +1,4 @@
-var token = 'ya29.a0AfB_byB6hdsZrGHwaV-enomt9ISvuR33TJ1dCnVDAMwQAzSv6plzar058AtFCiirCkGF9xWyEJwgE8nPCY21N-P5Eva0NA2V0YdKhfR3lxgy77dosCUS_Zvr1xGyCt65CKhZlx-l2VJXApiaY9MbPFi9UkgaGoxImOqTaCgYKAZISARMSFQHGX2MiBPFvz8thwczyGYBOLmLdfA0171';
+var token = 'ya29.a0AfB_byBvApZATV_8Ta9k0JN4DA4FgNr5DPf_I2AOcKSS3JgfhuXxsFbiZteC1wxaPCodzzxEDcqgItt79LC_ruFHdiay47KrPrlKC6iirhEalCtrOnfpgn_8YicjoG2JVvyhbxVZa31NihlBPJ9khMMAOu3FTNwQ878saCgYKAXESARMSFQHGX2MieygUVjhqTg4qOfVx5ZsXSQ0171';
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('DadosSmart.html')) {
         const verificarButtoncardio = document.getElementById('botaocard');

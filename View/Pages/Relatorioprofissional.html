@@ -134,8 +134,7 @@
 
 <script>
 
-  var token = 'ya29.a0AfB_byB6hdsZrGHwaV-enomt9ISvuR33TJ1dCnVDAMwQAzSv6plzar058AtFCiirCkGF9xWyEJwgE8nPCY21N-P5Eva0NA2V0YdKhfR3lxgy77dosCUS_Zvr1xGyCt65CKhZlx-l2VJXApiaY9MbPFi9UkgaGoxImOqTaCgYKAZISARMSFQHGX2MiBPFvz8thwczyGYBOLmLdfA0171'
-  var bpmArray;
+  var token = 'ya29.a0AfB_byBvApZATV_8Ta9k0JN4DA4FgNr5DPf_I2AOcKSS3JgfhuXxsFbiZteC1wxaPCodzzxEDcqgItt79LC_ruFHdiay47KrPrlKC6iirhEalCtrOnfpgn_8YicjoG2JVvyhbxVZa31NihlBPJ9khMMAOu3FTNwQ878saCgYKAXESARMSFQHGX2MieygUVjhqTg4qOfVx5ZsXSQ0171';
   document.addEventListener('DOMContentLoaded', async () => {
     const accessToken = token; // Substitua pelo seu token OAuth
 
@@ -148,31 +147,43 @@
     });
 
     const bpmData = await response.json();
-    const arraybpm = JSON.parse(bpmData);
-    console.log(arraybpm);
-    bpmArray = Array.isArray(bpmData) ? bpmData : [bpmData];
+    
 
+    const dadosFC = {
+      labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+      datasets: [
+        {
+          label: 'Frequência Cardíaca',
+          data: bpmData, // Substitui os dados pelo conteúdo de bpmArray após a quinta posição
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2,
+          fill: false
+        }
+      ]
+    }
+
+    const ctxFC = document.getElementById('graficoFC').getContext('2d');
+    // Configuração do gráfico
+    const configFC = {
+      type: 'line',
+      data: dadosFC,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    };
+
+    new Chart(ctxFC, configFC);
 
   });
 
 
 
-  // Dados de exemplo (substitua com seus próprios dados)
 
-  const dadosFC = {
-    labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
-    datasets: [
-      {
-        label: 'Frequência Cardíaca',
-        data: [80, 85, 88, 82, 90, 87, 92], // Substitui os dados pelo conteúdo de bpmArray após a quinta posição
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 2,
-        fill: false
-      }
-    ]
-  }
-
-  dadosFC.datasets.data
+  
   const dadosPassos = {
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
@@ -212,20 +223,7 @@
     ]
   };
 
-  const ctxFC = document.getElementById('graficoFC').getContext('2d');
-  // Configuração do gráfico
-  const configFC = {
-    type: 'line',
-    data: dadosFC,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  };
-
+ 
   const configPassos = {
     type: 'line',
     data: dadosPassos,
@@ -267,7 +265,6 @@
   const ctxDist = document.getElementById('graficoDist').getContext('2d');
   const ctxCalorias = document.getElementById('graficoCalorias').getContext('2d');
 
-  new Chart(ctxFC, configFC);
   new Chart(ctxPassos, configPassos);
   new Chart(ctxDist, configDist);
   new Chart(ctxCalorias, configCalorias);
