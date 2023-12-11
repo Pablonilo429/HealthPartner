@@ -1,3 +1,3 @@
 # fitness-app
 
-npm install; node index.js  (node start?)
+npm install; npm start (em "trabalhoIHC")
