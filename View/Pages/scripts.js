@@ -1,4 +1,4 @@
-var token = 'ya29.a0AfB_byBvApZATV_8Ta9k0JN4DA4FgNr5DPf_I2AOcKSS3JgfhuXxsFbiZteC1wxaPCodzzxEDcqgItt79LC_ruFHdiay47KrPrlKC6iirhEalCtrOnfpgn_8YicjoG2JVvyhbxVZa31NihlBPJ9khMMAOu3FTNwQ878saCgYKAXESARMSFQHGX2MieygUVjhqTg4qOfVx5ZsXSQ0171';
+const token = 'ya29.a0AXooCguoYzoMUc3ShbeQ6AFoCjBT-o7HHzA6zhGe-vNz_Fkeloxma6N6FRZiOsjIkKHOp4BTTBa-mUGS456YPqcnhjX4Vjbf1nDbp9UwYRVbkQIhpsBz4n20Wm_VpU69wZCU5FRc2LxMxHKzl088YE_I5P-DLoggq_DC9waCgYKAQ8SARMSFQHGX2MiZULre7AVDtMtWUFYQrkifA0173';
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('DadosSmart.html')) {
         const verificarButtoncardio = document.getElementById('botaocard');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const bpmData = await response.json();
                 const bpmArray = Array.isArray(bpmData) ? bpmData : [bpmData];
-                console.log(bpmArray[6]);
+                console.log(bpmArray[0]);
 
                 // Assuming you have an element with the ID 'frequenciacardica' to display the heart rate
                 const heartRateElement = document.getElementById('frequenciacardica');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update the HTML with the heart rate data
                 if (bpmArray.length > 0) {
                     const averageHeartRate = bpmArray.reduce((acc, val) => acc + val, 0) / bpmArray.length;
-                    heartRateElement.textContent = `${bpmArray[11].toFixed(0)} bpm`;
+                    heartRateElement.textContent = `${bpmArray[3].toFixed(0)} bpm`;
                 } else {
                     heartRateElement.textContent = 'Sem dados disponíveis.';
                 }
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update the HTML with the steps count data
                 if (stepsArray.length > 0) {
-                    stepsElement.textContent = `${stepsArray[5]}`;
+                    stepsElement.textContent = `${stepsArray[3]}`;
                 } else {
                     stepsElement.textContent = 'Sem dados disponíveis.';
                 }
@@ -77,14 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const distanceData = await response.json();
                 const distanceArray = Array.isArray(distanceData) ? distanceData : [distanceData];
-                console.log(distanceArray[6]);
+                console.log(distanceArray[0]);
 
                 // Assuming you have an element with the ID 'distancia' to display the distance
                 const distanceElement = document.getElementById('distancia');
 
                 // Update the HTML with the distance data converted to kilometers
                 if (distanceArray.length > 0) {
-                    const totalDistanceMeters = distanceArray[5];
+                    const totalDistanceMeters = distanceArray[3];
                     const totalDistanceKm = totalDistanceMeters / 1000; // Conversion from meters to kilometers
                     distanceElement.textContent = `${totalDistanceKm.toFixed(2)} km`;
                 } else {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update the HTML with the burned calories data
                 if (caloriesArray.length > 0) {
                     const totalCalories = caloriesArray.reduce((acc, val) => acc + val, 0);
-                    caloriesElement.textContent = `${caloriesArray[5].toFixed(0)}`;
+                    caloriesElement.textContent = `${caloriesArray[3].toFixed(0)}`;
                 } else {
                     caloriesElement.textContent = 'Sem dados disponíveis.';
                 }
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const heartRateData = await responseFC.json();
-                document.getElementById('FCrelatorio').textContent = heartRateData[11].toFixed(0); // Atualiza o elemento HTML com o valor da frequência cardíaca
+                document.getElementById('FCrelatorio').textContent = heartRateData[3].toFixed(0); // Atualiza o elemento HTML com o valor da frequência cardíaca
 
                 // Fetch para obter os dados da quantidade de passos
                 const responsePassos = await fetch('http://localhost:8001/steps2', {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const stepsData = await responsePassos.json();
-                document.getElementById('passosrelatorio').textContent = stepsData[5]; // Atualiza o elemento HTML com o valor da quantidade de passos
+                document.getElementById('passosrelatorio').textContent = stepsData[3]; // Atualiza o elemento HTML com o valor da quantidade de passos
 
                 // Fetch para obter os dados da distância percorrida
                 const responseDist = await fetch('http://localhost:8001/distance', {
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const distanceData = await responseDist.json();
-                const distanceKm = distanceData[5] / 1000; // Convertendo de metros para quilômetros
+                const distanceKm = distanceData[3] / 1000; // Convertendo de metros para quilômetros
                 document.getElementById('distrelatorio').textContent = distanceKm.toFixed(2); // Atualiza o elemento HTML com o valor da distância percorrida
 
                 // Fetch para obter os dados das calorias gastas
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const caloriesData = await responseCal.json();
-                document.getElementById('calrelatorio').textContent = caloriesData[5].toFixed(0); // Atualiza o elemento HTML com o valor das calorias gastas
+                document.getElementById('calrelatorio').textContent = caloriesData[3].toFixed(0); // Atualiza o elemento HTML com o valor das calorias gastas
             } catch (error) {
                 console.error('Erro ao buscar os dados do relatório:', error);
             }
@@ -186,65 +186,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
     if (window.location.pathname.endsWith('Relatorioprofissional.html')) {
-        const updateReport = async () => {
-            try {
-                const accessToken = token; // Substitua pelo seu token OAuth
+            const updateReport = async () => {
+                try {
+                    const accessToken = token; // Substitua pelo seu token OAuth
 
-                // Fetch para obter os dados da frequência cardíaca
-                const responseFC = await fetch('http://localhost:8001/bpm', {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const heartRateData = await responseFC.json();
-                document.getElementById('FCprofissional').textContent = heartRateData[11].toFixed(0) + " bpm"; // Atualiza o elemento HTML com o valor da frequência cardíaca
+                    // Fetch para obter os dados da frequência cardíaca
+                    const responseFC = await fetch('http://localhost:8001/bpm', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    const heartRateData = await responseFC.json();
+                    document.getElementById('FCprofissional').textContent = heartRateData[3].toFixed(0) + " bpm"; // Atualiza o elemento HTML com o valor da frequência cardíaca
 
-                // Fetch para obter os dados da quantidade de passos
-                const responsePassos = await fetch('http://localhost:8001/steps2', {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const stepsData = await responsePassos.json();
-                document.getElementById('Passosprofissional').textContent = stepsData[5]; // Atualiza o elemento HTML com o valor da quantidade de passos
+                    // Fetch para obter os dados da quantidade de passos
+                    const responsePassos = await fetch('http://localhost:8001/steps2', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    const stepsData = await responsePassos.json();
+                    document.getElementById('Passosprofissional').textContent = stepsData[3]; // Atualiza o elemento HTML com o valor da quantidade de passos
 
-                // Fetch para obter os dados da distância percorrida
-                const responseDist = await fetch('http://localhost:8001/distance', {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const distanceData = await responseDist.json();
-                const distanceKm = distanceData[5] / 1000; // Convertendo de metros para quilômetros
-                document.getElementById('Distprofissional').textContent = distanceKm.toFixed(2) + " KM"; // Atualiza o elemento HTML com o valor da distância percorrida
+                    // Fetch para obter os dados da distância percorrida
+                    const responseDist = await fetch('http://localhost:8001/distance', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    const distanceData = await responseDist.json();
+                    const distanceKm = distanceData[3] / 1000; // Convertendo de metros para quilômetros
+                    document.getElementById('Distprofissional').textContent = distanceKm.toFixed(1) + " KM"; // Atualiza o elemento HTML com o valor da distância percorrida
 
-                // Fetch para obter os dados das calorias gastas
-                const responseCal = await fetch('http://localhost:8001/calories', {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const caloriesData = await responseCal.json();
-                document.getElementById('Caloriasprofissional').textContent = caloriesData[5].toFixed(0) + " kcal"; // Atualiza o elemento HTML com o valor das calorias gastas
-            } catch (error) {
-                console.error('Erro ao buscar os dados do relatório:', error);
-            }
-        };
+                    // Fetch para obter os dados das calorias gastas
+                    const responseCal = await fetch('http://localhost:8001/calories', {
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    const caloriesData = await responseCal.json();
+                    document.getElementById('Caloriasprofissional').textContent = caloriesData[3].toFixed(0) + " cal"; // Atualiza o elemento HTML com o valor das calorias gastas
+                } catch (error) {
+                    console.error('Erro ao buscar os dados do relatório:', error);
+                }
+            };
 
-        // Chama a função para atualizar o relatório quando a página é carregada
-        updateReport();
+            // Chama a função para atualizar o relatório quando a página é carregada
+            updateReport();
+        }
 
-
-
-    }
+        
+    
 
 });
 
