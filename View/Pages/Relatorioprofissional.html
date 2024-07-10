@@ -153,6 +153,7 @@
       labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
       datasets: [
         {
+          type:'bar',
           label: 'Frequência Cardíaca',
           data: bpmData, // Substitui os dados pelo conteúdo de bpmArray após a quinta posição
           borderColor: 'rgba(255, 99, 132, 1)',
@@ -165,7 +166,7 @@
     const ctxFC = document.getElementById('graficoFC').getContext('2d');
     // Configuração do gráfico
     const configFC = {
-      type: 'line',
+      type:'bar',
       data: dadosFC,
         options: {
           scales: {
@@ -188,8 +189,9 @@
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
       {
+        type:'bar',
         label: 'Passos Percorridos',
-        data: [1450, 4563, 1152, 3639, 292, 6464, 3822],
+        data: [1450, 4563, 1152, 3639, 3823, 6464, 3822],
         borderColor: 'rgba(255, 206, 86, 1)',
         borderWidth: 2,
         fill: false
@@ -201,8 +203,9 @@
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
       {
+        type:'bar',
         label: 'Distância Percorrida (km)',
-        data: [1.0, 3.4, 0.7, 2.4, 0.1, 4.4, 2.5],
+        data: [1.0, 3.4, 0.7, 2.4, 3.1, 4.4, 2.5],
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 2,
         fill: false
@@ -214,8 +217,9 @@
     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
     datasets: [
       {
+        type:'bar',
         label: 'Calorias Gastas',
-        data: [45, 80, 34, 99, 10, 172, 104],
+        data: [1896, 1459, 1032, 986, 2631, 1321, 2341],
         borderColor: 'rgba(200, 198, 196, 1)',
         borderWidth: 2,
         fill: false
