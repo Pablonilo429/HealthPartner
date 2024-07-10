@@ -1,4 +1,4 @@
-const token = 'ya29.a0AXooCguoYzoMUc3ShbeQ6AFoCjBT-o7HHzA6zhGe-vNz_Fkeloxma6N6FRZiOsjIkKHOp4BTTBa-mUGS456YPqcnhjX4Vjbf1nDbp9UwYRVbkQIhpsBz4n20Wm_VpU69wZCU5FRc2LxMxHKzl088YE_I5P-DLoggq_DC9waCgYKAQ8SARMSFQHGX2MiZULre7AVDtMtWUFYQrkifA0173';
+const token = 'ya29.a0AXooCgvrL3SgqFk90DS1BFASq4ws4l9_mAgEtSis8Qik06JscWPC8KBtrxcNxW8ANIFDXT9Qe017OneIdsebmx-MwAlKLt2xydV-Axpn25K3b9XtpkP3wopUgPPdnrlQoo_I_YOJaoFuB0O5GzsepofB6ouQ344BvlHOaCgYKATQSARMSFQHGX2MiHe_JQZyeGu1TTTyja0PDhA0171';
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('DadosSmart.html')) {
         const verificarButtoncardio = document.getElementById('botaocard');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update the HTML with the steps count data
                 if (stepsArray.length > 0) {
-                    stepsElement.textContent = `${stepsArray[3]}`;
+                    stepsElement.textContent = `${stepsArray[0]}`;
                 } else {
                     stepsElement.textContent = 'Sem dados disponíveis.';
                 }
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update the HTML with the distance data converted to kilometers
                 if (distanceArray.length > 0) {
-                    const totalDistanceMeters = distanceArray[3];
+                    const totalDistanceMeters = distanceArray[6];
                     const totalDistanceKm = totalDistanceMeters / 1000; // Conversion from meters to kilometers
                     distanceElement.textContent = `${totalDistanceKm.toFixed(2)} km`;
                 } else {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const stepsData = await responsePassos.json();
-                document.getElementById('passosrelatorio').textContent = stepsData[3]; // Atualiza o elemento HTML com o valor da quantidade de passos
+                document.getElementById('passosrelatorio').textContent = stepsData[0]; // Atualiza o elemento HTML com o valor da quantidade de passos
 
                 // Fetch para obter os dados da distância percorrida
                 const responseDist = await fetch('http://localhost:8001/distance', {
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 });
                 const distanceData = await responseDist.json();
-                const distanceKm = distanceData[3] / 1000; // Convertendo de metros para quilômetros
+                const distanceKm = distanceData[6] / 1000; // Convertendo de metros para quilômetros
                 document.getElementById('distrelatorio').textContent = distanceKm.toFixed(2); // Atualiza o elemento HTML com o valor da distância percorrida
 
                 // Fetch para obter os dados das calorias gastas
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                     });
                     const stepsData = await responsePassos.json();
-                    document.getElementById('Passosprofissional').textContent = stepsData[3]; // Atualiza o elemento HTML com o valor da quantidade de passos
+                    document.getElementById('Passosprofissional').textContent = stepsData[0]; // Atualiza o elemento HTML com o valor da quantidade de passos
 
                     // Fetch para obter os dados da distância percorrida
                     const responseDist = await fetch('http://localhost:8001/distance', {
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                     });
                     const distanceData = await responseDist.json();
-                    const distanceKm = distanceData[3] / 1000; // Convertendo de metros para quilômetros
+                    const distanceKm = distanceData[6] / 1000; // Convertendo de metros para quilômetros
                     document.getElementById('Distprofissional').textContent = distanceKm.toFixed(1) + " KM"; // Atualiza o elemento HTML com o valor da distância percorrida
 
                     // Fetch para obter os dados das calorias gastas
@@ -242,9 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Chama a função para atualizar o relatório quando a página é carregada
             updateReport();
         }
-
-        
-    
 
 });
 
