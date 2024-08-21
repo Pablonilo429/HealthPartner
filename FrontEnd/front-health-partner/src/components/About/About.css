@@ -1,49 +1,46 @@
-/* Estilos específicos para o componente About */
-
 .about-container {
-    padding: 40px 20px;
-    /* Cor de fundo */
+  padding: 40px 20px;
+  /* Cor de fundo */
 }
 
 .about-content {
-    max-width: 800px;
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .about-title {
-    padding: 10px;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    background-color:rgba(0, 4, 15, 0.75);
-    border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #212529;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 .about-description {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .about-list {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .about-item {
-    background-color:rgba(0, 4, 15, 0.75);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .about-item-title {
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #212529;
+  margin-bottom: 10px;
 }
 
 .about-item-text {
-    font-size: 1.2rem;
-    color: #ffffff;
+  font-size: 1.2rem;
+  color: #212529;
 }
