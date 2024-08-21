@@ -1,0 +1,23 @@
+.report-section {
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.patient-info h3 {
+  margin-bottom: 1rem;
+}
+
+.note {
+  font-style: italic;
+  color: #6c757d;
+}
+
+.charts-section h4 {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .charts-section .row {
+    flex-direction: column;
+  }
+}
