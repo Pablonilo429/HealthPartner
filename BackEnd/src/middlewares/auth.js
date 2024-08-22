@@ -1,5 +1,7 @@
+import { tokenauth } from '../config/index.js';
+
 export const authMiddleware = (req, res, next) => {
-    const token = req.headers?.authorization?.split(' ')[1];
+    const token = tokenauth;
     if (!token) {
         return next(new Error('Please provide a token to access this resource'));
     }
