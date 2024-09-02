@@ -51,6 +51,8 @@ function SmartUserProfData() {
         const dadosDist = (await fetchData('distance')) || defaultData;
         const dadosCalorias = (await fetchData('calories')) || defaultData;
 
+        console.log(dadosDist, dadosCalorias)
+
         const formatData = (data, label, color) => ({
           labels: [
             'Dia 1',
@@ -93,7 +95,10 @@ function SmartUserProfData() {
         setupChart(
           chartFCRef,
           'graficoFC',
-          formatData(dadosFC, 'Frequência Cardíaca', 'rgba(255, 99, 132, 1)')
+          formatData(
+            dadosFC,
+            'Frequência Cardíaca',
+            'rgba(255, 99, 132, 1)')
         );
         setupChart(
           chartPassosRef,
@@ -179,11 +184,15 @@ function SmartUserProfData() {
                 <span id="Caloriasprofissional">{lastCalorias} cal</span>
               </h3>
               <p className="note">
-                * A frequência cardíaca mostrada acima se refere à última medida
+                * A frequência cardíaca mostrada acima se refere à última medida.
                 obtida.
               </p>
               <p className="note">
-                ** Dados obtidos no dia de hoje a partir das 00:00 hrs
+                ** Dados obtidos no dia de hoje a partir das 00:00 hrs.
+              </p>
+
+              <p className="note">
+                *** Se os valores dos gráficos estiverem em zero, pode haver um problema na captura dos dados ou os dados podem estar vazios.
               </p>
             </>
           )}

@@ -4,7 +4,7 @@ import { corsMiddleware } from './middlewares/cors.js';
 
 const app = express();
 
-//app.use(corsMiddleware);
+app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api', routes);
 

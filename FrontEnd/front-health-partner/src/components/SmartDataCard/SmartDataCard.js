@@ -35,8 +35,8 @@ SmartDataCard.propTypes = {
   onVerify: PropTypes.func.isRequired,
 };
 
-SmartDataCard.defaultProps = {
-  value: null,
-};
+// SmartDataCard.defaultProps = {
+//   value: null,
+// };
 
 export default SmartDataCard;
