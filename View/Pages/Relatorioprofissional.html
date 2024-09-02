@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" media="screen" />
+  <script src="https://kit.fontawesome.com/8c01641dda.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts.js"></script>
+
+  <title>Relatorio profissional</title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg" id="menu">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bold" href="Sobre.html">
+      <img src="../Images/logo.png" alt="Bootstrap" width="50" height="50">Saúde Mais
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active text-light fw-bold" aria-current="page" href="Homepage.html">Página Inicial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" href="Relatorio.html">Relatório</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" href="DadosSmart.html">Dados de monitoramento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" href="Perfil.html">Escolha seu perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" href="Sobre.html">Sobre</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-lg-2 mb-lg-3 pt-lg-4 ps-lg-5 text-dark p-2" id="relatorio">
+
+  <div class="row mb-lg-4 mb-3 mt-2">
+    <h2 class="text-lg-center">Confira o relatório do seu paciente</h2>
+  </div>
+
+  <div class="row mb-lg-4 mb-lg-3 mt-lg--2 text-right border-dark me-lg-2 ">
+
+    <div class="mb-lg-4">
+      <h3>Frequência Cardíaca: <span id="FCprofissional"></span></h3>
+    </div>
+
+    <div class="mb-lg-4">
+      <h3>Quantidade de Passos: <span id="Passosprofissional"></span></h3>
+    </div>
+
+    <div class="mb-lg-4">
+      <h3>Distância Percorrida: <span id="Distprofissional"></span></h3>
+    </div>
+
+    <div class="mb-lg-4">
+      <h3>Calorias gastas: <span id="Caloriasprofissional"></span></h3>
+    </div>
+    <div>
+      <p> * A frequência cardíaca mostrada acima se refere à última medida obtida.</p>
+      <p>** Dados obtidos no dia de hoje a partir das 00:00 hrs</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-lg-2 mb-lg-3 pt-lg-4 ps-lg-5 text-dark p-2" id="relatorio">
+  <div class="mb-lg-4">
+    <div>
+      <h1>Gráficos:</h1>
+    </div>
+    <div class="mb-lg-4 ms-lg-2">
+      <p class="p-lg-2 fw-bold">Abaixo estão os gráficos relativos aos dados do paciente que foram coletados nos últimos 7 dias</p>
+    </div>
+
+    <!-- Gráfico Frequência Cardíaca -->
+    <div class="mb-lg-2">
+      <div>
+        <h2>Frequência Cardíaca</h2>
+      </div>
+      <div>
+        <canvas id="graficoFC" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico Passos Percorridos -->
+    <div class="mb-lg-2">
+      <div>
+        <h2>Passos Percorridos</h2>
+      </div>
+      <div>
+        <canvas id="graficoPassos" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico Distância Percorrida -->
+    <div class="mb-lg-2">
+      <div>
+        <h2>Distância Percorrida</h2>
+      </div>
+      <div>
+        <canvas id="graficoDist" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico Calorias Gastas -->
+    <div class="mb-lg-2">
+      <div>
+        <h2>Calorias Gastas</h2>
+      </div>
+      <div>
+        <canvas id="graficoCalorias" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  // const token = 'ya29.a0AXooCguCp9J5A-PKtRxR-TXVJStDoi8ymjbpjFB9P1POo2lZxjkJ2os2OWRRoBDsDYM4uqcd40bLSAnsE_lK8Lu7kzsCzsuVRaeWl9_GuxGRNLW8O6FyshCT3hYo_39PQhecX2Rx_h_7X3YE8SeqjnNIPclnsNxL6PtgaCgYKAf0SARMSFQHGX2MicdNyjVUw7bCsnQSGyFaJ5A0171';
+  document.addEventListener('DOMContentLoaded', async () => {
+    const accessToken = token; // Substitua pelo seu token OAuth
+
+    const response = await fetch('http://localhost:8001/bpm', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const bpmData = await response.json();
+    
+
+    const dadosFC = {
+      labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+      datasets: [
+        {
+          type:'bar',
+          label: 'Frequência Cardíaca',
+          data: bpmData, // Substitui os dados pelo conteúdo de bpmArray após a quinta posição
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2,
+          fill: false
+        }
+      ]
+    }
+
+    const ctxFC = document.getElementById('graficoFC').getContext('2d');
+    // Configuração do gráfico
+    const configFC = {
+      type:'bar',
+      data: dadosFC,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    };
+
+    new Chart(ctxFC, configFC);
+
+  });
+
+
+
+
+  
+  const dadosPassos = {
+    labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+    datasets: [
+      {
+        type:'bar',
+        label: 'Passos Percorridos',
+        data: [1450, 4563, 1152, 3639, 3823, 6464, 3822],
+        borderColor: 'rgba(255, 206, 86, 1)',
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  };
+
+  const dadosDist = {
+    labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+    datasets: [
+      {
+        type:'bar',
+        label: 'Distância Percorrida (km)',
+        data: [1.0, 3.4, 0.7, 2.4, 3.1, 4.4, 2.5],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  };
+
+  const dadosCalorias = {
+    labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+    datasets: [
+      {
+        type:'bar',
+        label: 'Calorias Gastas',
+        data: [1896, 1459, 1032, 986, 2631, 1321, 2341],
+        borderColor: 'rgba(200, 198, 196, 1)',
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  };
+
+ 
+  const configPassos = {
+    type: 'line',
+    data: dadosPassos,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  const configDist = {
+    type: 'line',
+    data: dadosDist,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  const configCalorias = {
+    type: 'line',
+    data: dadosCalorias,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  // Renderiza os gráficos
+  const ctxPassos = document.getElementById('graficoPassos').getContext('2d');
+  const ctxDist = document.getElementById('graficoDist').getContext('2d');
+  const ctxCalorias = document.getElementById('graficoCalorias').getContext('2d');
+
+  new Chart(ctxPassos, configPassos);
+  new Chart(ctxDist, configDist);
+  new Chart(ctxCalorias, configCalorias);
+</script>
+
+
+
+
+
+</body>
+
+</html>
