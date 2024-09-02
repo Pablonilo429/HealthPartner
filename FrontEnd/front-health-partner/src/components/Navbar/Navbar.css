@@ -1,0 +1,35 @@
+/* src/components/Navbar/Navbar.css */
+
+.menu {
+  background-color: rgba(0, 4, 15, 0.8);
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand img {
+  margin-right: 0.5rem;
+}
+
+.nav-link {
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+    margin-left: 0rem;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+}

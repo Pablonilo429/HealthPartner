@@ -1,0 +1,51 @@
+/* src/components/WelcomeSection/WelcomeSection.css */
+
+.container {
+  width: 50%;
+  height: 90%;
+  background-color: rgba(0, 4, 15, 0.75);
+  border-radius: 0.5rem;
+  padding-top: 5rem;
+  padding: 2rem;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+}
+
+.container h3 {
+  font-size: 1.75rem;
+  margin-top: 1rem;
+}
+
+.container .btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.container .btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 70%;
+    padding: 1.5rem;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+
+  .container h3 {
+    font-size: 1.5rem;
+  }
+
+  .container .btn {
+    width: 100%;
+    font-size: 1.25rem;
+  }
+}

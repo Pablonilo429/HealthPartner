@@ -1,0 +1,107 @@
+.smartuser-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.profile-container {
+  border-radius: 0.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.smartuser-card {
+  height: 100%;
+  background-color: rgba(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.smartuser-icon {
+  font-size: 50px;
+  color: #333;
+}
+
+.smartuser-btn {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.smartuser-report-btn {
+  width: 50%;
+  font-size: 1.25rem;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.text-dark {
+  color: #ffffff;
+}
+
+.report-section {
+  background-color: #ffffff;
+  color: #495057;
+  border: 1px solid #495057;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  min-height: 300px;
+}
+
+.one {
+  min-height: 500px;
+}
+
+.report-title {
+  color: #495057;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.report-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.report-list li {
+  margin-bottom: 10px;
+}
+
+.report-note {
+  font-style: italic;
+  color: #787e85;
+}
+
+@media (max-width: 768px) {
+  .smartuser-container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .smartuser-card {
+    padding: 10px;
+  }
+
+  .smartuser-btn,
+  .smartuser-report-btn {
+    font-size: 0.875rem;
+    padding: 8px;
+  }
+
+  .smartuser-icon {
+    font-size: 40px;
+  }
+
+  .smartuser-report-btn {
+    width: 70%;
+  }
+}

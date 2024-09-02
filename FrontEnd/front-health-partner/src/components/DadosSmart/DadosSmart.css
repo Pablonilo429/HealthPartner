@@ -1,0 +1,21 @@
+/* src/components/DadosSmart.css */
+.smartuser-card {
+  border: 2px solid #343a40;
+}
+
+.smartuser-icon {
+  font-size: 2rem;
+  color: ##212529;
+}
+
+.smartuser-btn {
+  margin-top: 10px;
+}
+
+.smartuser-report-btn {
+  margin-top: 20px;
+}
+
+.buttonRel {
+  background-color: #303841 !important;
+}
