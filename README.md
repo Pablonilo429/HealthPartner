@@ -1,4 +1,4 @@
-# HealthPartner - Monitorando suas Atividades Vitais!
+# Saúde Mais - Monitorando suas Atividades Vitais!
 
 Este projeto foi desenvolvido como parte da avaliação 2 da disciplina IC824 - "Interação Humano-Computador" da UFRRJ no semestre 2023.2. O projeto foi aprimorado para estender suas funcionalidades e melhorar a experiência do usuário, utilizando tecnologias modernas.
 
